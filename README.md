@@ -1,0 +1,2 @@
+# GifStamper
+GIF Stamper
