@@ -160,7 +160,7 @@ $(document).ready(function () {
                 break;
             case '.qna':
                 break;
-            case '.credits':
+            case '.about':
                 break;
         }
     }
@@ -173,7 +173,7 @@ $(document).ready(function () {
     $(".side-nav .options").click(() => { show('.options'); });
     $(".side-nav .tips").click(() => { show('.tips'); });
     $(".side-nav .qna").click(() => { show('.qna'); });
-    $(".side-nav .credits").click(() => { show('.credits'); });
+    $(".side-nav .about").click(() => { show('.about'); });
 
     function doIntro(settings) {
         $('#no-intro').prop('checked', settings.skipIntro);

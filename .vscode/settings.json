@@ -1,4 +1,7 @@
 {
     "eslint.enable": false,
-    "jshint.enable": false
+    "jshint.enable": false,
+    "cSpell.words": [
+        "stampmeta"
+    ]
 }

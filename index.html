@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Stamper</title>
+    <title>Gif Stamper</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
@@ -27,7 +27,7 @@
         <a href="#" class="options">Options</a>
         <a href="#" class="tips">Tips</a>
         <a href="#" class="qna">Q & A</a>
-        <a href="#" class="credits">Credits</a>
+        <a href="#" class="about">About</a>
     </div>
 
     <div class="content">
@@ -155,30 +155,25 @@
             <div class="qna pane">
                 <ul>
                     <li>
-                        <p>Q: Who are you and may I steal your code?</p>
-                        <p>A: I'm Holly, @imthatholly on Twitter, and I release this work into the public
-                            domain, and there's a file that says all that blah, blah, blah included.</p>
-                    </li>
-                    <li>
-                        <p>Q: How this thing work?</p>
+                        <p>Q: How does this thing work?</p>
                         <p>A: As a static page it loads from the server then code running locally,
-                            client-side, in your browser does the rest. This differs from like
+                            client-side, in your browser does the rest. This differs from sites like
                             <a href="https://ezgif.com/">ezGIF</a> where you upload the files to them
                             and then they make the GIF on their server and you download it from them.</p>
                     </li>
                     <li>
                         <p>Q: Can I run this local, from my drive?</p>
-                        <p>A: Yes, and how I test. But you must host the pages on a server and can"t access
-                            as c:\whatever because something do do with HTML canvases and cross-origin protection,
+                        <p>A: Yes, and how I test. But you must host the pages on a server and can't access
+                            as c:\whatever because something to do with HTML canvases and cross-origin protection,
                             or whatever, and I'll update this better later.</p>
                     </li>
                     <li>
                         <p>Q: Why do the stamped GIFs have so many frames?</p>
                         <p>A: Twitter is weak on handling GIFs with differing frame delays so
-                            all frames must be as quick as the stamping frames, i.e., where you
-                            want to say, "show this frame for 1s", you must have 10 frames if the
+                            all frames must be as quick as the stamping frames. I.e., where you
+                            want to show this frame for 1s, that's 10 frames if the
                             few moving frames need to show for 1/10th second; 33 frames, if they
-                            need to show at for 1/30th second. </p>
+                            need to show for 1/30th second. </p>
                     </li>
                     <li>
                         <p>Q: How can I make my own stamp?</p>
@@ -187,10 +182,17 @@
                             creates all the needed files. I'll work on making that available, but
                             not as Windows application because 🚨 security risk to you.</p>
                     </li>
+                    <li>
+                        <p>Q: May I steal your code?</p>
+                        <p>A: I release this work into the public domain, and there's a file that says all
+                            that blah, blah, blah <a href="./LICENSE" target="_blank">included</a>.</p>
+                    </li>
                 </ul>
             </div>
-            <!-- Credits -->
-            <div class="credits pane">
+            <!-- About -->
+            <div class="about pane">
+                <p>GIF Stamper Version 1.0.0 7/25/2019 by <a href="https://twitter.com/imthatholly"
+                        target="_blank">@imthatholly</a></p>
                 <p>Credit to:</p>
                 <ul>
                     <li>

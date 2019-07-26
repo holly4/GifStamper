@@ -158,10 +158,10 @@ td .stamp {
     width: 100%;  
 }
 
-.tips li, .qna li, .credits li  {
+.tips li, .qna li, .about li  {
   margin: 10px 5px;
 }
 
-.credits .tips .qna {
+.about .tips .qna {
   padding: 5px 0px;
 }
