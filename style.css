@@ -1,0 +1,167 @@
+body {
+  background-color: #f0f0f0;
+}
+
+.side-nav {
+  background-color: #101010;
+}
+
+.side-nav .active {
+  background-color: #404040;
+}
+
+.side-nav a:hover {
+  color: #f0f0f0;
+}
+
+.stamp {
+  width: 90px;
+  height: 60px;
+}
+
+.error-text {
+  color: red;
+}
+
+td .stamp {
+  border: 1px solid #101010;
+}
+
+/* navigation bar */
+.side-nav {
+  font-family: "Lato", sans-serif;
+  height: 100%;
+  width: 100pt;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.side-nav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+@media screen and (max-height: 450px) {
+  .side-nav {
+    padding-top: 15pt;
+  }
+
+  .side-nav a {
+    font-size: 18py;
+  }
+}
+
+/* content */
+
+.content {
+  font-family: 'Source Sans Pro', sans-serif;
+  width: 600px;
+  margin-left: 100pt;
+  /* Same as the width of the side-nav */
+  margin-right: 10pt;
+  font-size: 12pt;
+  /*border: 1px ridge red;*/
+  display: block;
+}
+
+.content span,
+.content input,
+.content button {
+  margin: 5px 5px;
+}
+
+#filename {
+  display: block;
+}
+
+.fa-search-minus,
+.fa-search-plus {
+  font-size: 40pt;
+}
+
+.number {
+  width: 40pt;
+}
+
+.frames-list {
+  overflow-x: scroll;
+}
+
+/* select screen */
+
+.image_picker_selector {
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.select-image label,
+.select-image button {
+  background-color: #F0F0F0;
+  padding: 5px 10px;
+  border-radius: 1px;
+  border: 1px ridge #101010;
+  font-size: 0.8rem;
+  height: auto;
+}
+
+.select-image label:hover,
+.select-image button:hover {
+  background-color: #101010;
+  color: #F0F0F0;
+}
+
+.select-image label:active,
+.select-image button:active {
+  background-color: #101010;
+  color: #F0F0F0;
+}
+
+/* stamp screen */
+.progress-bar {
+  width: 20em;
+  background-color: #e0e0e0;
+}
+
+.progress-bar-fill {
+  display: block;
+  height: 0.5em;
+  background-color: #404040;
+  transition: width 50ms ease-in-out;
+}
+
+.progress-bar-indeterminate {
+  display: block;
+  height: 1.5em;
+  width: 20em;
+  background-color: #e0e0e0;
+  text-align: center;
+}
+
+/* options */ 
+.options td:nth-child(1), .options td:nth-child(2) {
+  text-align: center;
+}
+
+.options th:nth-child(3) {
+  text-align: left;
+}
+
+.options table {
+    table-layout: auto;
+    width: 100%;  
+}
+
+.tips li, .qna li, .credits li  {
+  margin: 10px 5px;
+}
+
+.credits .tips .qna {
+  padding: 5px 0px;
+}

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stamper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon-16x16.png">
+    <link rel="manifest" href="./images/site.webmanifest">
+    <link rel="stylesheet" href="./dist/image-picker.css">
+    <link rel="stylesheet" href="./dist/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="side-nav">
+        <a href="#" class="home">Intro</a>
+        <a href="#" class="select-image">Select Image</a>
+        <a href="#" class="select-stamp">Select Stamp</a>
+        <a href="#" class="do-stamp">Stamp</a>
+        <a href="#" class="do-download">Download</a>
+        <a href="#" class="options">Options</a>
+        <a href="#" class="tips">Tips</a>
+        <a href="#" class="qna">Q & A</a>
+        <a href="#" class="credits">Credits</a>
+    </div>
+
+    <div class="content">
+        <div class="main">
+            <!-- Main -->
+            <div class="home pane">
+                <p>GIF Stamper stamps GIFs on images provided by you.
+                    To stamp a GIF:</p>
+                <ol>
+                    <li>Select an image</li>
+                    <li>Select a stamp</li>
+                    <li>Stamp the image</li>
+                    <li>Download the image</li>
+                </ol>
+                <p>💡 To try it out just open those four tabs in order and press Stamp! on (3)</p>
+                <input id="no-intro" type="checkbox" unchecked><span>Alright, 😫! Start me on the Select Image screen in
+                    the future.</span>
+            </div>
+            <!-- Select Image -->
+            <div class="select-image pane">
+                <div>
+                    <label for="file-chooser">Select A File (PNG, JPG)</label>
+                    <input type="file" id="file-chooser" name="file-chooser" accept=".jpg, .jpeg, .png">
+                </div>
+                <div><span id="filename"></span></div>
+                <div>
+                    <!-- todo the mouse cursor is not an arrow when test caret when over these -->
+                    <i id="zoom-in" class="fa fa-search-plus" style="font-size:24px"></i>
+                    <i id="zoom-out" class="fa fa-search-minus" style="font-size:24px"></i>
+                    <span>Width</span> <input class="number" type="number" id="width" min="1">
+                    <span>Height</span><input class="number" type="number" id="height" min="1">
+                    <input type="checkbox" id="maintainAspect" checked><span>Maintain Aspect</span>
+                </div>
+                <div>
+                    <img id="image">
+                </div>
+            </div>
+
+            <!-- Select Stamp -->
+            <div class="select-stamp pane">
+                <select id="stamps" class="image-picker"></select>
+                <div class="frames-list">
+                    <table>
+                        <tr id="stamp"></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Do Stamp -->
+            <div class="do-stamp pane">
+                <div>
+                    <button id="btn-stamp" disabled>Stamp!</button>
+                    <span>Delay (100th-seconds)</span> <input class="number" type="number" id="delay" min="0">
+                </div>
+                <div>
+                    <span class="error-text" style="display:none"></span>
+                </div>
+                <div>
+                    <span id="creation-text"></span>
+                </div>
+                <div class="progress-bar">
+                    <span id="creation-bar" class="progress-bar-fill" style="width: 0%;"></span>
+                </div>
+                <div>
+                    <span id="render-text"></span>
+                    <span> </span><!-- to force display -->
+                </div>
+                <div>
+                    <canvas style="border:1px solid #000000;"></canvas>
+                </div>
+                <div class="frames-list">
+                    <table>
+                        <tr id="frames"></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Do Download -->
+            <div class="do-download pane">
+                <div class="dl-warn">
+                    <p>This isn't a file on a server, but in your browser, so some methods to
+                        download like drag and drop won't work. To download 1) press the download
+                        button, or 2) use the save-as context menu option of your browser.
+                        <input id="no-dl-warn" type="checkbox" checked><span>Got it! Don't
+                            show me this again. </span></p>
+                </div>
+
+                <div>
+                    <button id="btn-download" disabled><i class="fa fa-download"></i>Download</button>
+                    <span id="gif-size"></span><span id="gif-name"></span>
+                </div>
+                <div>
+                    <img id="gif" style="display:none">
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="options pane">
+                <p>Browsers allow an application to use up to 5MB to store data.
+                    The following information is being stored between sessions.</p>
+                <table id="settings"></table>
+                <input id="no-save" type="checkbox" unchecked><label>Do not store data.</label>
+                <p>Checking this box clears information about the stamp and image and which
+                    no longer be stored as long as checked. Preferences are still stored.</p>
+                <button id="btn-clear-all">Clear preferences</button>
+            </div>
+
+            <!-- Tips -->
+            <div class="tips pane">
+                <ul>
+                    <li>I pronounce GIF "Jif" because it rolls of the tongue easier, although I know
+                        it's a "Graphical Interchange Format" file, but like I care.😊</li>
+                    <li><a href="https://twitter.com/imthatholly/status/1154308539671691264" target="_blank">Edge is
+                            really slow</a>
+                        😫 to render GIFs. Chrome and Firefox are much faster,
+                        and comparable, and that's what I tested with on Windows 10.
+                    </li>
+                    <li> You can stamp on the default grid stamp provided to test stamps. You can
+                        get back to that on the Options screen by selecting to not store information,
+                        and then back, which removes the stored picture. </li>
+                </ul>
+            </div>
+
+            <!-- Tips -->
+            <div class="qna pane">
+                <ul>
+                    <li>
+                        <p>Q: Who are you and may I steal your code?</p>
+                        <p>A: I'm Holly, @imthatholly on Twitter, and I release this work into the public
+                            domain, and there's a file that says all that blah, blah, blah included.</p>
+                    </li>
+                    <li>
+                        <p>Q: How this thing work?</p>
+                        <p>A: As a static page it loads from the server then code running locally,
+                            client-side, in your browser does the rest. This differs from like
+                            <a href="https://ezgif.com/">ezGIF</a> where you upload the files to them
+                            and then they make the GIF on their server and you download it from them.</p>
+                    </li>
+                    <li>
+                        <p>Q: Can I run this local, from my drive?</p>
+                        <p>A: Yes, and how I test. But you must host the pages on a server and can"t access
+                            as c:\whatever because something do do with HTML canvases and cross-origin protection,
+                            or whatever, and I'll update this better later.</p>
+                    </li>
+                    <li>
+                        <p>Q: Why do the stamped GIFs have so many frames?</p>
+                        <p>A: Twitter is weak on handling GIFs with differing frame delays so
+                            all frames must be as quick as the stamping frames, i.e., where you
+                            want to say, "show this frame for 1s", you must have 10 frames if the
+                            few moving frames need to show for 1/10th second; 33 frames, if they
+                            need to show at for 1/30th second. </p>
+                    </li>
+                    <li>
+                        <p>Q: How can I make my own stamp?</p>
+                        <p>A: A challenge at this point because how I do it is with a Windows app
+                            that takes just the image to be stamped, and a template for a stamp, and
+                            creates all the needed files. I'll work on making that available, but
+                            not as Windows application because 🚨 security risk to you.</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- Credits -->
+            <div class="credits pane">
+                <p>Credit to:</p>
+                <ul>
+                    <li>
+                        <a href="https://jnordberg.github.io/gif.js/" target="_blank">GIF.js</a> which provides
+                        client-side GIF encoding.
+                    </li>
+                    <li>
+                        <a href="https://github.com/rvera/image-picker" target="_blank">image-picker</a> which
+                        is used to display the stamp images and pick one.
+                    </li>
+                    <li>
+                        <a href="http://danml.com/download.html" target="_blank">download.js</a> which
+                        does the nitty gritty of downloading the completed GIF to your browser.
+                    </li>
+                    <li>
+                        <a href="https://ezgif.com/" target="_blank">ezGIF</a> a free site to manipulate
+                        GIFs online and very helpful to see the individual frames, and such, and also how
+                        you can reduce the size of a GIF because I'm unsure how good GIF.js is at compressing.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="./stamps/stampmeta.js"></script>
+    <script type="text/javascript" src="./dist/image-picker.min.js"></script>
+    <script type="text/javascript" src="gif.js"></script>
+    <script type="text/javascript" src="./dist/download.js"></script>
+    <script type="text/javascript" src="stamper.js"></script>
+    <script type="text/javascript" src="selectImage.js"></script>
+    <script type="text/javascript" src="selectStamp.js"></script>
+    <script type="text/javascript" src="doStamp.js"></script>
+    <script type="text/javascript" src="doDownload.js"></script>
+    <script type="text/javascript" src="doOptions.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
