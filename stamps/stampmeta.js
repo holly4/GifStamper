@@ -3,6 +3,6 @@ function getStampFiles(name) {
     return stampMeta[name].filter(function (value) {
         return 'png' == value.split('.').pop().toLowerCase();
     }).map(function (n) {
-        return '../stamps/' + name + '/' + n;
+        return './stamps/' + name + '/' + n;
     });
 }
